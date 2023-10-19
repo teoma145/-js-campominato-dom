@@ -1,0 +1,16 @@
+
+#squarebox{
+    width: 800px;
+    height:800px;
+    background-color: blue;    
+    margin: 0 auto;
+
+}
+
+.box{
+    border: 2px solid white;
+    color: white;
+}
+.clicksquare{
+    background-color: aqua;
+}
