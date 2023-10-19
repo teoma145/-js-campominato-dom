@@ -11,7 +11,7 @@ btn.addEventListener('click',function(){
   squarebox.innerHTML='';
   console.log(sceltadifficoltà)
   let numeroquadratini;
-  
+  const bombscore = document.getElementById('scorebomb');
   
   if(sceltadifficoltà ==='facile'){
       numeroquadratini = 100;
@@ -50,15 +50,19 @@ function boxadd(quadratinoattuale,numsquare,bombegenerate,){
   square.style.height=`calc(100% / ${squarewidth})`
   
   square.addEventListener('click',function(){
+    
     square.classList.add('clicksquare')
     if (bombegenerate.includes(quadratinoattuale +1)) {
       square.innerHTML = '<i class="fa-solid fa-bomb fa-beat" style="color: #fbff00;"></i>';
       square.style.backgroundColor = 'red';
+      bombscore.innerHTML = `Hai perso il tuo punteggio è ${score}`
+      
+      
     } else {
       square.innerHTML = quadratinoattuale +1 ;
       score++;
       console.log(quadratinoattuale +1)
-      const bombscore = document.getElementById('scorebomb');
+      
       bombscore.innerHTML = `Il tuo punteggio è ${score}`;
     }
   })
