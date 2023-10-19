@@ -41,10 +41,11 @@ function boxadd(quadratinoattuale,numsquare,bombegenerate){
     
     square.addEventListener('click',function(){
       square.classList.add('clicksquare')
-      if (bombegenerate.includes(quadratinoattuale)) {
+      if (bombegenerate.includes(quadratinoattuale +1)) {
         square.innerHTML = '<i class="fa-solid fa-bomb fa-beat" style="color: #fbff00;"></i>';
       } else {
-        square.innerHTML = quadratinoattuale + 1;
+        square.innerHTML = quadratinoattuale +1 ;
+        console.log(quadratinoattuale +1)
       }
     })
     return square
