@@ -53,6 +53,7 @@ function boxadd(quadratinoattuale,numsquare,bombegenerate,){
     square.classList.add('clicksquare')
     if (bombegenerate.includes(quadratinoattuale +1)) {
       square.innerHTML = '<i class="fa-solid fa-bomb fa-beat" style="color: #fbff00;"></i>';
+      square.style.backgroundColor = 'red';
     } else {
       square.innerHTML = quadratinoattuale +1 ;
       score++;
