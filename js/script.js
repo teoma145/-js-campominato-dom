@@ -4,12 +4,15 @@ console.log(btn)
 
 
 btn.addEventListener('click',function(){
+  let allbombs = 16;
 
   let sceltadifficoltà = document.getElementById('Difficoltà').value;
   const squarebox = document.getElementById('squarebox')
   squarebox.innerHTML='';
   console.log(sceltadifficoltà)
   let numeroquadratini;
+  
+  
   if(sceltadifficoltà ==='facile'){
       numeroquadratini = 100;
   }
@@ -20,11 +23,13 @@ btn.addEventListener('click',function(){
      numeroquadratini=49;
   }
    
-   
+  const bombegenerate= generabombe(numeroquadratini,allbombs)
+  
    for(let i = 0; i < numeroquadratini;i++){
     let square = boxadd(i,numeroquadratini);
     squarebox.append(square);
    }
+   
 })
 
 function boxadd(quadratinoattuale,numsquare){
@@ -39,4 +44,19 @@ function boxadd(quadratinoattuale,numsquare){
       console.log(quadratinoattuale + 1)
     })
     return square
+}
+function generabombe(numeroquadratini,allbombs){
+    const arraybombe=[];
+    while(arraybombe.length < allbombs){
+    let bomb = GetRandomnumber(1,numeroquadratini);
+    if(!arraybombe.includes(bomb)){
+      arraybombe.push(bomb);
+    }
+  }
+  console.log(arraybombe)
+  return arraybombe;
+}
+
+function GetRandomnumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
