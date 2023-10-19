@@ -26,19 +26,23 @@ btn.addEventListener('click',function(){
   const bombegenerate= generabombe(numeroquadratini,allbombs)
   
    for(let i = 0; i < numeroquadratini;i++){
-    let square = boxadd(i,numeroquadratini);
+    let square = boxadd(i,numeroquadratini,bombegenerate);
     squarebox.append(square);
    }
    
 })
 
-function boxadd(quadratinoattuale,numsquare){
+function boxadd(quadratinoattuale,numsquare,bombegenerate){
     squarewidth= Math.sqrt(numsquare)
     const square = document.createElement('div')
     square.classList.add('box')
     square.style.width=`calc(100% / ${squarewidth})`
     square.style.height=`calc(100% / ${squarewidth})`
-    square.innerHTML=quadratinoattuale + 1;
+    if (bombegenerate.includes(quadratinoattuale)) {
+      square.innerHTML = 'Bombe';
+    } else {
+      square.innerHTML = quadratinoattuale + 1;
+    }
     square.addEventListener('click',function(){
       square.classList.add('clicksquare')
       console.log(quadratinoattuale + 1)
