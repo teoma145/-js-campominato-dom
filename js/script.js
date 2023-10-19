@@ -1,11 +1,11 @@
 
 const btn=document.querySelector('button')
 console.log(btn)
-let score=0;
+
 
 btn.addEventListener('click',function(){
   let allbombs = 16;
-  
+  let score=0;
   let sceltadifficoltà = document.getElementById('Difficoltà').value;
   const squarebox = document.getElementById('squarebox')
   squarebox.innerHTML='';
