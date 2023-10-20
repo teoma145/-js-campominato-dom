@@ -61,8 +61,13 @@ function boxadd(quadratinoattuale,numsquare,bombegenerate,){
     square.classList.add('clicksquare')
     this.removeEventListener('click',drawclick);
     if (bombegenerate.includes(parseInt(quadratinoattuale +1))) {
-      square.innerHTML = '<i class="fa-solid fa-bomb fa-beat" style="color: #fbff00;"></i>';
-      square.style.backgroundColor = 'red';
+      for (let i = 0; i < bombegenerate.length; i++) {
+        const bombPos = bombegenerate[i];
+        const bombSquare = squarebox.querySelector(`.box:nth-child(${bombPos})`);
+        bombSquare.innerHTML = '<i class="fa-solid fa-bomb fa-beat" style="color: #fbff00;"></i>';
+        bombSquare.style.backgroundColor = 'red';
+        
+      }
       bombscore.innerHTML = `Hai perso il tuo punteggio è ${score}`
       gameInProgress = false;
       
