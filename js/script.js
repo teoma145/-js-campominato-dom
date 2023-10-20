@@ -1,4 +1,6 @@
 
+Campominato()
+function Campominato(){
 const btn=document.querySelector('button')
 console.log(btn)
 
@@ -6,6 +8,9 @@ console.log(btn)
 btn.addEventListener('click',function(){
   let allbombs = 16;
   let score=0;
+  let gameInProgress = true;
+  
+  
   let sceltadifficoltà = document.getElementById('Difficoltà').value;
   const squarebox = document.getElementById('squarebox')
   squarebox.innerHTML='';
@@ -22,7 +27,8 @@ btn.addEventListener('click',function(){
   else{
      numeroquadratini=49;
   }
-   
+  let maxscore = ((numeroquadratini-1) - allbombs); 
+  console.log(maxscore)
   const bombegenerate= generabombe(numeroquadratini,allbombs)
    
    for(let i = 0; i < numeroquadratini;i++){
@@ -49,25 +55,38 @@ function boxadd(quadratinoattuale,numsquare,bombegenerate,){
   square.style.width=`calc(100% / ${squarewidth})`
   square.style.height=`calc(100% / ${squarewidth})`
   
-  square.addEventListener('click',function(){
-    
+  square.addEventListener('click',drawclick)
+    function drawclick(bombs){
+  if (gameInProgress) {   
     square.classList.add('clicksquare')
-    if (bombegenerate.includes(quadratinoattuale +1)) {
+    this.removeEventListener('click',drawclick);
+    if (bombegenerate.includes(parseInt(quadratinoattuale +1))) {
       square.innerHTML = '<i class="fa-solid fa-bomb fa-beat" style="color: #fbff00;"></i>';
       square.style.backgroundColor = 'red';
       bombscore.innerHTML = `Hai perso il tuo punteggio è ${score}`
+      gameInProgress = false;
       
-      
-    } else {
+    
+    } 
+    
+    else if( score >= maxscore){
+      square.innerHTML = quadratinoattuale +1 ;
+      score++;
+      bombscore.innerHTML = `Hai vinto il tuo punteggio è ${score}`
+      gameInProgress = false;
+    }
+    else {
       square.innerHTML = quadratinoattuale +1 ;
       score++;
       console.log(quadratinoattuale +1)
       
       bombscore.innerHTML = `Il tuo punteggio è ${score}`;
     }
-  })
+    }
+    }
   return square
 }
+
 })
 
 
@@ -75,4 +94,5 @@ function boxadd(quadratinoattuale,numsquare,bombegenerate,){
 
 function GetRandomnumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 }
